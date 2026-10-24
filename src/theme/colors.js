@@ -1,0 +1,38 @@
+export const colors = {
+  background: '#F5F7FB',
+  card: '#FFFFFF',
+  primary: '#E3350D',
+  primaryDark: '#1D3557',
+  text: '#1F2937',
+  textMuted: '#6B7280',
+  border: '#D9E2EC',
+  danger: '#D32F2F',
+  types: {
+    normal: '#A8A77A',
+    fire: '#EE8130',
+    water: '#6390F0',
+    electric: '#F7D02C',
+    grass: '#7AC74C',
+    ice: '#96D9D6',
+    fighting: '#C22E28',
+    poison: '#A33EA1',
+    ground: '#E2BF65',
+    flying: '#A98FF3',
+    psychic: '#F95587',
+    bug: '#A6B91A',
+    rock: '#B6A136',
+    ghost: '#735797',
+    dragon: '#6F35FC',
+    dark: '#705746',
+    steel: '#B7B7CE',
+    fairy: '#D685AD',
+  },
+};
+
+export const spacing = {
+  xs: 4,
+  sm: 8,
+  md: 16,
+  lg: 24,
+  xl: 32,
+};
