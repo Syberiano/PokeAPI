@@ -28,7 +28,7 @@ export default function HomeScreen({ navigation }) {
       if (results.length < LIMIT) setHasMore(false);
     } catch (err) {
       if (err.name !== 'AbortError') {
-        setError('No se pudo conectar con la PokéAPI. Revisa tu internet.'); //[cite: 4]
+        setError('No se pudo conectar con la PokéAPI. Revisa tu internet.');
       }
     } finally {
       setLoading(false);
@@ -69,7 +69,7 @@ export default function HomeScreen({ navigation }) {
       setHasMore(false);
     } catch (err) {
       if (err.name !== 'AbortError') {
-        setError(`No se encontró ningún Pokémon con "${searchText}".`); //[cite: 4]
+        setError(`No se encontró ningún Pokémon con "${searchText}".`);
       }
     } finally {
       setLoading(false);
@@ -80,37 +80,37 @@ export default function HomeScreen({ navigation }) {
     if (!isSearching && !loadingMore && hasMore && !loading) {
       const nextOffset = offset + LIMIT;
       setOffset(nextOffset);
-      loadPokemons(nextOffset, true); //[cite: 3]
+      loadPokemons(nextOffset, true);
     }
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.headerTitle}>PokéDex Explorer</Text> {/*[cite: 3] */}
+        <Text style={styles.headerTitle}>PokéDex Explorer</Text>
       </View>
 
       <View style={styles.searchRow}>
         <TextInput
           style={styles.input}
-          placeholder="Busca por nombre o número..." //[cite: 4]
+          placeholder="Busca por nombre o número..."
           placeholderTextColor={colors.textMuted}
           value={searchText}
           onChangeText={setSearchText}
           onSubmitEditing={handleSearch}
           returnKeyType="search"
-          autoCapitalize="none" //[cite: 5]
-          autoCorrect={false} //[cite: 5]
+          autoCapitalize="none"
+          autoCorrect={false}
         />
         <Pressable style={styles.button} onPress={handleSearch}>
-          <Text style={styles.buttonText}>Buscar</Text> {/*[cite: 4] */}
+          <Text style={styles.buttonText}>Buscar</Text>
         </Pressable>
       </View>
 
       {loading ? (
         <View style={styles.centerContainer}>
           <ActivityIndicator size="large" color={colors.primary} />
-          <Text style={styles.loadingText}>Cargando Pokémon...</Text> {/*[cite: 4] */}
+          <Text style={styles.loadingText}>Cargando Pokémon...</Text>
         </View>
       ) : error ? (
         <View style={styles.centerContainer}>
@@ -123,14 +123,14 @@ export default function HomeScreen({ navigation }) {
               loadPokemons(0, false);
             }}
           >
-            <Text style={styles.buttonText}>Reintentar</Text> {/*[cite: 4] */}
+            <Text style={styles.buttonText}>Reintentar</Text>
           </Pressable>
         </View>
       ) : (
         <FlatList
           data={pokemonList}
           keyExtractor={(item) => String(item.id)}
-          numColumns={2} //[cite: 4]
+          numColumns={2}
           columnWrapperStyle={styles.columnWrapper}
           renderItem={({ item }) => (
             <PokemonCard
@@ -143,13 +143,13 @@ export default function HomeScreen({ navigation }) {
           ListFooterComponent={
             loadingMore ? (
               <View style={styles.footerLoader}>
-                <ActivityIndicator size="small" color={colors.primary} /> {/*[cite: 4] */}
+                <ActivityIndicator size="small" color={colors.primary} />
               </View>
             ) : null
           }
           ListEmptyComponent={
             <View style={styles.centerContainer}>
-              <Text style={styles.emptyText}>Sin resultados encontrados.</Text> {/*[cite: 4] */}
+              <Text style={styles.emptyText}>Sin resultados encontrados.</Text>
             </View>
           }
           contentContainerStyle={styles.listContainer}

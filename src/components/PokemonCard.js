@@ -2,8 +2,8 @@ import { Pressable, View, Text, Image, StyleSheet } from 'react-native';
 import { colors, spacing } from '../theme/colors';
 
 export default function PokemonCard({ pokemon, onPress }) {
-  const formattedId = `#${String(pokemon.id).padStart(3, '0')}`; //[cite: 5]
-  const capitalizedName = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1); //[cite: 4]
+  const formattedId = `#${String(pokemon.id).padStart(3, '0')}`;
+  const capitalizedName = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
 
   return (
     <Pressable
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     maxWidth: '46%',
   },
   pressed: { opacity: 0.7 },
-  image: { width: 100, height: 100 }, //[cite: 5]
+  image: { width: 100, height: 100 },
   info: { alignItems: 'center', marginTop: spacing.sm },
   id: { fontSize: 12, color: colors.textMuted, fontWeight: 'bold' },
   name: { fontSize: 16, fontWeight: 'bold', color: colors.text, marginTop: 2 },

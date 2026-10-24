@@ -96,7 +96,7 @@ export default function DetailScreen({ route, navigation }) {
       <View style={styles.sectionCard}>
         <Text style={styles.sectionTitle}>Estadísticas Base</Text>
         {pokemon.stats.map((stat, index) => {
-          const percentage = Math.min((stat.value / 255) * 100, 100); // Máximo 255[cite: 4]
+          const percentage = Math.min((stat.value / 255) * 100, 100);
           return (
             <View key={index} style={styles.statRow}>
               <Text style={styles.statName}>{stat.name.toUpperCase()}</Text>
@@ -110,7 +110,7 @@ export default function DetailScreen({ route, navigation }) {
       </View>
 
       <Pressable style={styles.button} onPress={() => navigation.goBack()}>
-        <Text style={styles.buttonText}>Volver a la lista</Text> {/*[cite: 4] */}
+        <Text style={styles.buttonText}>Volver a la lista</Text>
       </Pressable>
     </ScrollView>
   );
@@ -123,9 +123,9 @@ const styles = StyleSheet.create({
   loadingText: { marginTop: spacing.sm, color: colors.textMuted },
   errorText: { textAlign: 'center', color: colors.danger, fontSize: 16 },
   headerCard: { backgroundColor: colors.card, borderRadius: 16, padding: spacing.md, alignItems: 'center', borderWidth: 1, borderColor: colors.border, marginBottom: spacing.md },
-  image: { width: 180, height: 180 }, //[cite: 5]
+  image: { width: 180, height: 180, maxWidth: '100%' },
   id: { fontSize: 14, fontWeight: 'bold', color: colors.textMuted, marginTop: spacing.sm },
-  title: { fontSize: 26, fontWeight: 'bold', color: colors.text, marginVertical: 4 },
+  title: { width: '100%', fontSize: 26, fontWeight: 'bold', color: colors.text, marginVertical: 4, textAlign: 'center' },
   typesContainer: { flexDirection: 'row', gap: spacing.sm, marginTop: spacing.sm },
   badge: { paddingHorizontal: 12, paddingVertical: 4, borderRadius: 20 },
   badgeText: { color: '#fff', fontWeight: 'bold', fontSize: 12 },

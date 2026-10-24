@@ -18,7 +18,10 @@ export async function getPokemonList(limit = 20, offset = 0, signal) {
 }
 
 export async function getPokemonDetails(nameOrId, signal) {
-  const query = String(nameOrId).toLowerCase().trim();
+  const input = String(nameOrId).trim().toLowerCase();
+  const query = /^#?\d+$/.test(input)
+    ? String(Number(input.replace('#', '')))
+    : input;
   const response = await fetch(`${BASE_URL}/pokemon/${query}`, { signal });
   
   if (!response.ok) {
@@ -32,10 +35,10 @@ export async function getPokemonDetails(nameOrId, signal) {
   return {
     id: data.id,
     name: data.name,
-    height: data.height / 10, // Conversión de decímetros a metros[cite: 2]
-    weight: data.weight / 10, // Conversión de hectogramos a kilogramos[cite: 2]
+    height: data.height / 10,
+    weight: data.weight / 10,
     types: data.types.map((t) => t.type.name),
     stats: data.stats.map((s) => ({ name: s.stat.name, value: s.base_stat })),
-    image: data.sprites.other['official-artwork'].front_default || data.sprites.front_default,
+    image: data.sprites.other?.['official-artwork']?.front_default || data.sprites.front_default,
   };
 }
